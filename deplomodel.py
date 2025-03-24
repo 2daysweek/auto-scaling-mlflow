@@ -3,8 +3,13 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 
-import mlflow
 import mlflow.sklearn
+
+# Set our tracking server uri for logging, this uri needs to be updated as it works locally
+mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
+
+# Create a new MLflow Experiment
+mlflow.set_experiment("MLflow test")
 
 with mlflow.start_run() as run:
     X, y = make_regression(n_features=4, n_informative=2, random_state=0, shuffle=False)
@@ -16,7 +21,6 @@ with mlflow.start_run() as run:
     model = RandomForestRegressor(**params)
     model.fit(X_train, y_train)
 
-    # mlflow.set_tracking_uri("")
     # Log parameters and metrics using the MLflow APIs
     mlflow.log_params(params)
 
