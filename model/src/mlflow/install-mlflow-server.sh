@@ -1,5 +1,5 @@
 #!/bin/bash
-helm repo add community-charts https://community-charts.github.io/helm-charts
+helm repo add getindata https://getindata.github.io/helm-charts/
 helm repo update
 
 
@@ -27,7 +27,19 @@ else
 fi
 
 
-helm upgrade --install $RELEASE_NAME community-charts/mlflow --namespace $NAMESPACE --set .Values.ingress.enabled=true
+helm upgrade --install $RELEASE_NAME getindata/mlflow --namespace $NAMESPACE --set ingress.enabled=true --set persistence.defaultArtifactRoot="file:/tmp/artifacts"	
 
-kubectl --namespace $NAMESPACE port-forward service/$RELEASE_NAME 5000:5000 &
+while true; do
+  if [[ "$(kubectl get pods | grep $RELEASE_NAME | awk {'print $3}')" == "Running" ]]; then
+    echo "container is ready"
+    break
+  else
+    echo "wait for container to get ready"
+    sleep 1;
+  fi
+done
+
+echo "port forwarding"
+
+kubectl --namespace $NAMESPACE port-forward service/$RELEASE_NAME 8080:8080 &
 

@@ -62,6 +62,81 @@ ARM-based devices)
 
 - Connect the devices on the same network.
 
+### Connecting to the Raspberry Pis from outside the local network
+
+In order to connect to them from outside, we need to set a NordVPN meshnet.
+
+#### Install NordVPN
+
+In the Raspberry Pi, install NordVPN:
+
+1. **Update the system:**
+```shell
+sudo apt update
+sudo apt upgrade -y
+```
+2. **Install curl (if not already installed):**
+```shell
+sudo apt install curl
+```
+3. **Install NordVPN client:**
+```shell
+sh <(curl -sSf [https://downloads.nordcdn.com/apps/linux/install.sh](https://downloads.nordcdn.com/apps/linux/install.sh))
+```
+4. **Restart your Raspberry Pi:**
+```shell
+sudo reboot
+```
+
+#### Logging into NordVPN
+
+1. **Initiate login:**
+
+```shell
+nordvpn login
+```
+2. **Complete login in browser:** Open the provided URL in a browser and click "Continue".
+3. **Copy the callback URL:** Right-click the "Continue" button and copy the link. The URL will look similar to:
+
+```
+nordvpn://login?action=login&exchange_token=YOUR_EXCHANGE_TOKEN&status=done
+```
+
+4. **Login using the callback URL in the terminal (replace `<URL>` with the copied URL):**
+
+```shell
+nordvpn login --callback "<URL>"
+```
+
+#### Turning on Meshnet on the Raspberry Pi
+
+1. **Enable Meshnet:**
+
+```shell
+nordvpn set meshnet on
+```
+
+2. **Verify Meshnet is enabled (optional):**
+
+```bash
+nordvpn meshnet peer list
+```
+
+#### Invite users to the meshnet
+
+You can add users to the meshnet like this:
+
+```shell
+nordvpn meshnet invite send <email>
+```
+
+Install NordVPN in your machine and turn on the Meshnet. You should be able to
+connect to the Raspberry Pi using the IP shown in:
+
+```bash
+nordvpn meshnet peer list
+```
+
 ### Kubernetes Installation
 
 - Central Node: Install k3s as the control plane.
