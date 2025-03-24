@@ -91,3 +91,6 @@ queue and spin up pods as needed.
 - Simulate model requests to test auto-scaling and resource allocation.
 - Monitor logs and resource usage to refine performance.
 
+## Resources 
+
+- [wp-k8s: WordPress on privately hosted Kubernetes cluster (Raspberry Pi 4 + Synology)](https://foolcontrol.org/?p=4004)
