@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "auto_scaling_mlflow"
+dynamic = ["version"]
+readme = "README.md"
+
+dependencies = [
+    "numpy",
+    "scikit-learn",
+    "mlflow"
+]
