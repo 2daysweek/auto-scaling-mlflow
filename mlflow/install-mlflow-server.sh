@@ -29,7 +29,5 @@ fi
 
 helm upgrade --install $RELEASE_NAME community-charts/mlflow --namespace $NAMESPACE --set .Values.ingress.enabled=true
 
-wait
-
 kubectl --namespace $NAMESPACE port-forward service/$(kubectl get svc | grep $RELEASE_NAME  | awk {'print $1}') 5000:5000 &
 
