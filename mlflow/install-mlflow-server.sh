@@ -30,7 +30,7 @@ fi
 helm upgrade --install $RELEASE_NAME getindata/mlflow --namespace $NAMESPACE --set ingress.enabled=true --set persistence.defaultArtifactRoot="file:/tmp/artifacts"	
 
 while true; do
-  if [[ "$(kubectl get pods | grep $RELEASE_NAME | awk {'print $3}')" == "Running" ]]; then
+  if [[ "$(kubectl get pods -n $NAMESPACE | grep $RELEASE_NAME | awk {'print $3}')" == "Running" ]]; then
     echo "container is ready"
     break
   else
