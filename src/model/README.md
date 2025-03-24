@@ -4,7 +4,6 @@
 ## Install dependencies
 Create a virtual environment
 ```shell
-cd model/
 python -m venv test_env
 . test_env/bin/activate
 ```
