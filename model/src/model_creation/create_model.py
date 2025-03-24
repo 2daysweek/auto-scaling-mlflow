@@ -1,7 +1,7 @@
 from sklearn.datasets import load_diabetes
 import pickle
 from sklearn.linear_model import LinearRegression
-
+import mlflow
 
 def train_model():
     X, y = load_diabetes(return_X_y=True, as_frame=True)
@@ -22,7 +22,7 @@ def load_model(model_name="model.pkl"):
 def main():
     model = train_model()
     store_model(model)
-
+    mlflow.sklearn.log_model(model, "model")
 
 if __name__ == "__main__":
     main()

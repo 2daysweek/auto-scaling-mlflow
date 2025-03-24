@@ -1,0 +1,22 @@
+Metadata-Version: 2.4
+Name: auto_scaling_mlflow
+Version: 0.0.0
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: scikit-learn
+Requires-Dist: mlflow
+
+# Running and building mlflow model
+
+
+## Install dependencies
+Create a virtual environment
+```
+cd model/
+python -m venv test_env
+. test_env/bin/activate
+```
+
+```shell
+pip install .
+```

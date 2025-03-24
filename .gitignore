@@ -1,2 +1,5 @@
 /auto_mlflow_env
 .python-version
+.DS_Store
+**/test_env/
+**/mlruns/
