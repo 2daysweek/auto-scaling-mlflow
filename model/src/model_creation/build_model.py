@@ -7,6 +7,8 @@ import mlflow
 import mlflow.sklearn
 
 
+mlflow.set_tracking_uri("localhost:5000")
+mlflow.set_experiment("experiment_week_auto_mlflow")
 with mlflow.start_run() as run:
     X, y = make_regression(n_features=4, n_informative=2, random_state=0, shuffle=False)
     X_train, X_test, y_train, y_test = train_test_split(
