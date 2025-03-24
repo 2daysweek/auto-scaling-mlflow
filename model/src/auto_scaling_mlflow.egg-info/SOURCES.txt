@@ -6,4 +6,3 @@ src/auto_scaling_mlflow.egg-info/dependency_links.txt
 src/auto_scaling_mlflow.egg-info/requires.txt
 src/auto_scaling_mlflow.egg-info/top_level.txt
 src/model_creation/build_model.py
-src/model_creation/create_model.py
