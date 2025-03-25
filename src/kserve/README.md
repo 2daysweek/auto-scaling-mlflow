@@ -9,7 +9,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 1. Setup gateway for kserve
 ```
-k create namespace kserve
+kubectl create namespace kserve
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.1/standard-install.yaml -n kserve
 kubectl apply -f config/gateway-class.yaml
 kubectl apply -f config/gateway.yaml
