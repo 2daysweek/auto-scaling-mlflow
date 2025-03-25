@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: sklearn-iris-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: sklearn-iris-predictor
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 30
