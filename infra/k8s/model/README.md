@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # https://kserve.github.io/website/0.8/modelserving/autoscaling/autoscaling/#predict-inferenceservice-with-concurrent-requests
-
-=======
->>>>>>> main
 ### Deploy model in kserve
 
 ```shell
