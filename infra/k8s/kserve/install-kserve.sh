@@ -51,7 +51,7 @@ helm upgrade --install kserve oci://ghcr.io/kserve/charts/kserve --version v0.14
  --set kserve.controller.gateway.ingressGateway.kserveGateway=${NAMESPACE}/kserve-ingress-gateway
 
 while true; do
-  if [[ "$(kubectl get pods -n $NAMESPACE | grep controller | awk {'print $3}')" == "Running" ]]; then
+  if [[ -z "$(kubectl get pods -n kserve --field-selector=status.phase!=Running -o name)" ]]; then
     echo "KServe controller is ready"
     break
   else
