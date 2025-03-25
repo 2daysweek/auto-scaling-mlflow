@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # https://kserve.github.io/website/0.8/modelserving/autoscaling/autoscaling/#predict-inferenceservice-with-concurrent-requests
 
+=======
+>>>>>>> main
 ### Deploy model in kserve
 
 ```shell
@@ -34,10 +37,7 @@ INPUT_PATH="./request.json"
 SERVICE_HOSTNAME="localhost"
 PREDICT_URI="http://localhost:8080/v1/models/sklearn-iris:predict"
 
-hey -z 30s -c 100 -m POST -host ${SERVICE_HOSTNAME} -D $INPUT_PATH $PREDICT_URI
-
-```
-
+hey -z 30s -c 10 -m POST -host ${SERVICE_HOSTNAME} -D $INPUT_PATH $PREDICT_URI
 ```
 kubectl apply -n kserve-test -f - <<EOF
 apiVersion: "serving.kserve.io/v1beta1"
