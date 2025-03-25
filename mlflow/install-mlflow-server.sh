@@ -1,5 +1,5 @@
 #!/bin/bash
-helm repo add getindata https://getindata.github.io/helm-charts/
+helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
 
 
@@ -27,10 +27,10 @@ else
 fi
 
 
-helm upgrade --install $RELEASE_NAME getindata/mlflow --namespace $NAMESPACE --set ingress.enabled=true --set persistence.defaultArtifactRoot="file:/tmp/artifacts"	
+helm upgrade --install $RELEASE_NAME bitnami/mlflow --version 2.5.5 --namespace $NAMESPACE --set tracking.ingress.enabled=true --set tracking.auth.enabled=false
 
 while true; do
-  if [[ "$(kubectl get pods -n $NAMESPACE | grep $RELEASE_NAME | awk {'print $3}')" == "Running" ]]; then
+  if [[ "$(kubectl get pods -n $NAMESPACE | grep $RELEASE_NAME-tracking | awk {'print $3}')" == "Running" ]]; then
     echo "container is ready"
     break
   else
@@ -39,7 +39,4 @@ while true; do
   fi
 done
 
-echo "port forwarding"
-
-kubectl --namespace $NAMESPACE port-forward service/$RELEASE_NAME 8080:8080 &
-
+echo "mlflow is ready to be used"
