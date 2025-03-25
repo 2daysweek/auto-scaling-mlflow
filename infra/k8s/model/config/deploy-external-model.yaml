@@ -3,18 +3,12 @@ apiVersion: "serving.kserve.io/v1beta1"
 kind: "InferenceService"
 metadata:
   name: "sklearn-iris"
-<<<<<<< HEAD
   annotations:
     serving.kserve.io/autoscalerClass: "external"
 spec:
   predictor:
     model:
       args: ["--enable_docs_url=True"]
-=======
-spec:
-  predictor:
-    model:
->>>>>>> main
       modelFormat:
         name: sklearn
       storageUri: "gs://kfserving-examples/models/sklearn/1.0/model"
