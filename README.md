@@ -137,6 +137,18 @@ connect to the Raspberry Pi using the IP shown in:
 nordvpn meshnet peer list
 ```
 
+### How to start the day
+
+- Connect laptop and pi to the router to be in the same network.
+- Run the fallowing command on pi to obtain an IP address from the ethernet interface
+
+```bash
+sudo dhclient wlan0
+```
+- Join to the normal wifi in laptop to connect to the internet
+- Open the Nord VPN app and copy the mesh address for the pi
+- ssh to the ip and start hacking
+
 ### Kubernetes Installation
 
 - Central Node: Install k3s as the control plane.
