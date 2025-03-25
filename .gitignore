@@ -1,0 +1,32 @@
+/auto_mlflow_env
+.python-version
+.DS_Store
+**/test_env/
+**/mlruns/
+/model/build/
+
+### Python template
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+**/__pycache__
+**/*.pyc
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
