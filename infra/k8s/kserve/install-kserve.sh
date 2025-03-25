@@ -35,15 +35,21 @@ else
   fi
 fi
 
+echo "Waiting for cert-manager to be ready (60s)"
+sleep 30
+
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.1/standard-install.yaml -n kserve
 kubectl apply -f config/gateway-class.yaml
 kubectl apply -f config/gateway.yaml
 
-echo "Waiting for kserve dependencies to be ready (20s)"
-sleep 20
+echo "Waiting for kserve dependencies to be ready (60s)"
+sleep 60
 
 echo "Installing kserve"
-helm upgrade --install kserve-crd oci://ghcr.io/kserve/charts/kserve-crd --version v0.14.1 -n ${NAMESPACE}
+helm install kserve-crd oci://ghcr.io/kserve/charts/kserve-crd --version v0.14.1 -n ${NAMESPACE}
+
+echo "Waiting for kserve-crd to be ready (30s)"
+sleep 30
 
 helm upgrade --install kserve oci://ghcr.io/kserve/charts/kserve --version v0.14.1  --namespace ${NAMESPACE} \
  --set kserve.controller.deploymentMode=RawDeployment \
