@@ -7,7 +7,7 @@
 ```
 You should see "Container is ready" and "Port forwarding" message in logs of above command.
 
-2. Open browser and enter URL `http://localhost:8080/`
+2. Open browser and enter URL `http://localhost:80/`
   You'll see the mlflow instance up and running.
 
 3. Now run below command to download the dependencies for the model.
