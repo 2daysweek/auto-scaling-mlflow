@@ -9,4 +9,3 @@ spec:
       modelFormat:
         name: sklearn
       storageUri: "gs://kfserving-examples/models/sklearn/1.0/model"
-EOF
